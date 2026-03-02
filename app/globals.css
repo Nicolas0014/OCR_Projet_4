@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #ffd15b;
+  --background-light: #ededed;
+  --background-dark: #000000;
+  --text-gray: #7a7a7a;
+  --font-display: "Anton", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --customMax: 1240px;
+}
+
+@theme {
+  --color-background-light: var(--background-light);
+  --color-background-dark: var(--background-dark);
+  --color-primary: var(--primary);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --max-width-customMax: var(--customMax);
+  --color-gray: var(--text-gray);
+}
+
+body {
+  background: var(--background-light);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+.max-w-customMax {
+  max-width: var(--customMax);
+  margin: auto;
+  width: 95%;
+}
