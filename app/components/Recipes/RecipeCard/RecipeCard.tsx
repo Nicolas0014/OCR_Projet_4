@@ -1,0 +1,30 @@
+// Components
+import Link from "next/link";
+import RecipeStep from "../RecipeStep/RecipeStep";
+
+// Types
+import { Recipe } from "@/app/types";
+
+export default function CardRecipe(recipe: Recipe) {
+  return (
+    <Link
+      href={`/recette/${recipe.slug}`}
+      className="bg-white rounded-xl shadow-md overflow-hidden recipeCard"
+    >
+      <img
+        src={`/images/recipes/${recipe.image}`}
+        alt={recipe.name}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-8 space-y-8">
+        <h2 className="recipe-title">{recipe.name}</h2>
+        <RecipeStep
+          title="Recette"
+          content={recipe.description}
+          isTruncated={true}
+        />
+        <RecipeStep title="Ingrédients" content={recipe.ingredients} />
+      </div>
+    </Link>
+  );
+}

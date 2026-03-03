@@ -1,26 +1,35 @@
 // Components
 import Hero from "./components/Hero/Hero";
-import CardRecipe from "./components/CardRecipe/CardRecipe";
+import RecipeCard from "./components/Recipes/RecipeCard/RecipeCard";
+import Filters from "./components/Filters/Filters";
 
 // Datas
 import recipes from "./data/recipes.json";
 
 // Types
 import { Recipe } from "./types";
+import { Search } from "lucide-react";
 
 export default function Home() {
   return (
     <>
-      <Hero bgImage="/images/hero-bg.jpg" />
-
-      <section className="my-16 max-w-customMax">
-        <div className="m-16">Filtres</div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recipes.map((recipe : Recipe) => (
-            <CardRecipe key={recipe.id} {...recipe} />
-          ))}
+      <Hero bgImage="/images/hero-bg.jpg">
+        <h1 className="accent-title">
+          Découvrez nos recettes <br />
+          du quotidien, simples et délicieuses
+        </h1>
+        <div className="w-full mt-8 flex items-center p-4 bg-white rounded-lg">
+          <input
+            className="flex-1 px-4 focus:outline-none"
+            placeholder="Rechercher une recette, un ingrédient, ..."
+          />
+          <button className="bg-background p-3 rounded-xl">
+            <Search className="text-white" width={32} height={32} />
+          </button>
         </div>
-      </section>
+      </Hero>
+
+      <Filters />
     </>
   );
 }

@@ -31,3 +31,30 @@ body {
   margin: auto;
   width: 95%;
 }
+
+/* Custom Titles */
+.accent-title {
+  @apply text-primary uppercase text-center text-4xl md:text-6xl font-bold font-display leading-normal;
+}
+
+.recipe-title {
+  @apply text-xl font-semibold font-display;
+}
+
+.recipe-subtitle {
+  @apply font-bold text-gray uppercase mb-4;
+}
+
+.recipeCard {
+  .recipe-title {
+    @apply text-lg;
+  }
+
+  .recipe-subtitle {
+    @apply text-xs;
+  }
+
+  .recipe-text {
+    @apply text-sm;
+  }
+}
