@@ -18,6 +18,7 @@ interface Ingredient {
 }
 
 interface Filters {
+  searchQuery: string;
   ingredients: string[];
   ustensils: string[];
   appliance: string[];

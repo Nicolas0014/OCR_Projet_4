@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { Anton, Manrope } from "next/font/google";
 import "./globals.css";
+
+// Layout
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+
+// Providers
+import { FilteredRecipesProvider } from "./contexts/FilteredRecipesContext";
 
 const anton = Anton({
   weight: "400",
@@ -30,9 +35,11 @@ export default function RootLayout({
       <body
         className={`${anton.variable} ${manrope.variable} antialiased bg-background-light`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <FilteredRecipesProvider>
+          <Header />
+          {children}
+          <Footer />
+        </FilteredRecipesProvider>
       </body>
     </html>
   );
