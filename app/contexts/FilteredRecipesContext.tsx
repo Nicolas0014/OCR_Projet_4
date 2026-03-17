@@ -16,7 +16,7 @@ type FilteredRecipesContextType = {
   filteredRecipes: Recipe[];
   setFilteredRecipes: (recipes: Recipe[]) => void;
   activeFilters: Filters;
-  setActiveFilters: (filters: Filters) => void;
+  setActiveFilters: React.Dispatch<React.SetStateAction<Filters>>;
 };
 
 const FilteredRecipesContext = createContext<

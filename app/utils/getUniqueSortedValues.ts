@@ -1,5 +1,13 @@
 import { Recipe } from "@/app/types";
 
+/**
+ * Fonction utilitaire pour extraire des valeurs uniques et triées à partir d'un tableau de recettes.
+ * @param recipes
+ * @param key
+ * @param nestedKey
+ * @param excludedValues
+ * @returns Un tableau de chaînes de caractères uniques et triées
+ */
 export function getUniqueSortedValues<K extends keyof Recipe>(
   recipes: Recipe[],
   key: K,
@@ -15,23 +23,24 @@ export function getUniqueSortedValues<K extends keyof Recipe>(
       v.toLowerCase().trim(),
     );
 
-    // Cas 1 : tableau simple (ex: ustensils)
-    if (Array.isArray(value) && typeof value[0] === "string") {
+    // Cas 1 : tableau de strings
+    if (Array.isArray(value)) {
       value.forEach((item) => {
-        const normalizedItem = item.toLowerCase().trim();
-        if (!excludedNormalized.includes(normalizedItem)) {
-          set.add(normalizedItem);
+        if (typeof item === "string") {
+          const normalized = item.toLowerCase().trim();
+          if (!excludedNormalized.includes(normalized)) {
+            set.add(normalized);
+          }
         }
-      });
-    }
 
-    // Cas 2 : tableau d'objets (ex: ingredients)
-    else if (Array.isArray(value) && nestedKey) {
-      value.forEach((item: any) => {
-        if (item[nestedKey]) {
-          const normalizedItem = String(item[nestedKey]).toLowerCase().trim();
-          if (!excludedNormalized.includes(normalizedItem)) {
-            set.add(normalizedItem);
+        // Cas 2 : tableau d'objets (ingredients)
+        else if (nestedKey && item && typeof item === "object") {
+          const nested = item[nestedKey as keyof typeof item];
+          if (typeof nested === "string") {
+            const normalized = nested.toLowerCase().trim();
+            if (!excludedNormalized.includes(normalized)) {
+              set.add(normalized);
+            }
           }
         }
       });

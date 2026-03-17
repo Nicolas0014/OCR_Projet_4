@@ -8,7 +8,10 @@ export function globalRecipesFilter({
 }) {
   let results: Recipe[] = [];
 
-  if (activeFilters.searchQuery.length < 2) {
+  if (
+    activeFilters.searchQuery.length < 2 &&
+    activeFilters.searchQuery.length > 0
+  ) {
     return recipes;
   }
 

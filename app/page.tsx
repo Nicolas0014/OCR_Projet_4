@@ -1,6 +1,6 @@
 // Components
 import Hero from "./components/Hero/Hero";
-import Filters from "./components/Filters/Filters";
+import TagsSearch from "./components/Filters/TagsSearch";
 import ManualSearch from "./components/Filters/ManualSearch";
 import RecipesList from "./components/Recipes/RecipesList/RecipesList";
 
@@ -16,7 +16,7 @@ export default function Home() {
       </Hero>
 
       <section className="py-16 space-y-8 max-w-customMax">
-        <Filters />
+        <TagsSearch />
         <RecipesList />
       </section>
     </>

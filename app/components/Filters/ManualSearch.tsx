@@ -11,13 +11,16 @@ import { useFilteredRecipes } from "@/app/contexts/FilteredRecipesContext";
 
 export default function ManualSearch() {
   const [query, setQuery] = useState("");
-  const { activeFilters, setActiveFilters } = useFilteredRecipes();
+  const { setActiveFilters } = useFilteredRecipes();
 
   const handleManualSearch = (query: string) => {
-    setActiveFilters({
-      ...activeFilters,
+    setQuery(query);
+    if (query.length < 3) return;
+
+    setActiveFilters((prev) => ({
+      ...prev,
       searchQuery: query,
-    });
+    }));
   };
 
   return (
@@ -26,20 +29,10 @@ export default function ManualSearch() {
         className="flex-1 px-4 focus:outline-none"
         placeholder="Rechercher une recette, un ingrédient, ..."
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleManualSearch(query);
-          }
-        }}
+        onChange={(e) => handleManualSearch(e.target.value)}
       />
       <button className="bg-background-dark p-3 rounded-xl">
-        <Search
-          className="text-white"
-          width={32}
-          height={32}
-          onClick={() => handleManualSearch(query)}
-        />
+        <Search className="text-white" width={32} height={32} />
       </button>
     </div>
   );
