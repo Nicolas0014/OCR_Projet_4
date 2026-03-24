@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero({
   bgImage,
   opacity = 0.3,
@@ -9,8 +11,9 @@ export default function Hero({
 }) {
   return (
     <section className={`relative ${children ? "h-screen" : "h-50"} w-full`}>
-      <img
+      <Image
         src={bgImage}
+        fill
         alt="Hero Image"
         className="object-cover w-full h-full"
       />

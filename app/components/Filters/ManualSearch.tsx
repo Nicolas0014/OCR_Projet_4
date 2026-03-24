@@ -15,7 +15,7 @@ export default function ManualSearch() {
 
   const handleManualSearch = (query: string) => {
     setQuery(query);
-    if (query.length < 3) return;
+    // if (query.length < 3) return;
 
     setActiveFilters((prev) => ({
       ...prev,

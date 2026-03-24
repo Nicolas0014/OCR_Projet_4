@@ -3,6 +3,7 @@ import Link from "next/link";
 import RecipeStep from "../RecipeStep/RecipeStep";
 import IngredientArrayStep from "../RecipeStep/Scenarios/IngredientArrayStep";
 import ArrayStep from "../RecipeStep/Scenarios/ArrayStep";
+import Image from "next/image";
 
 // Types
 import { Recipe } from "@/app/types";
@@ -13,9 +14,11 @@ export default function CardRecipe(recipe: Recipe) {
       href={`/recette/${recipe.slug}`}
       className="bg-white rounded-xl shadow-md overflow-hidden recipeCard"
     >
-      <img
+      <Image
         src={`/images/recipes/${recipe.image}`}
         alt={recipe.name}
+        width={400}
+        height={192}
         className="w-full h-48 object-cover"
       />
       <div className="p-8 space-y-8">
