@@ -24,4 +24,6 @@ interface Filters {
   appliance: string[];
 }
 
-export type { Recipe, Ingredient, Filters };
+type FilterTagsKeys = Exclude<keyof Filters, "searchQuery">;
+
+export type { Recipe, Ingredient, Filters, FilterTagsKeys };
